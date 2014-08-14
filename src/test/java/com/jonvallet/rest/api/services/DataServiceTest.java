@@ -9,7 +9,7 @@ import java.util.Map;
 public class DataServiceTest {
 
     @Test
-    public void IStoreKeyFirstNameWithValueJonWhenIRetrieveTheValuesAreTheSame(){
+    public void IStoreKeyFirstNameWithValueJonWhenIRetrieveTheValuesAreTheSame() {
 
         String token = new TokenService().requestToken();
         String key = "firstName";
@@ -23,8 +23,8 @@ public class DataServiceTest {
 
     }
 
-    @Test(expected=TokenNotFoundException.class)
-    public void IRetrieveAnonExistentTokenIGetATokenNotFoundException(){
+    @Test(expected = TokenNotFoundException.class)
+    public void IRetrieveAnonExistentTokenIGetATokenNotFoundException() {
 
         String token = new TokenService().requestToken();
         String key = "firstName";
@@ -33,7 +33,7 @@ public class DataServiceTest {
     }
 
     @Test
-    public void IRetrieveANonExistentKeyIGetNullValue(){
+    public void IRetrieveANonExistentKeyIGetNullValue() {
 
         String token = new TokenService().requestToken();
         String key = "firstName";
@@ -48,7 +48,7 @@ public class DataServiceTest {
     }
 
     @Test
-         public void IStoreTwoValuesICanRetriveBoth(){
+    public void IStoreTwoValuesICanRetriveBoth() {
 
         String token = new TokenService().requestToken();
         String key = "firstName";
@@ -72,7 +72,7 @@ public class DataServiceTest {
     }
 
     @Test
-    public void IStoreTwoValuesWithSameTokenAndDifferentKeysICanRetrieveBoth(){
+    public void IStoreTwoValuesWithSameTokenAndDifferentKeysICanRetrieveBoth() {
 
         String token = new TokenService().requestToken();
         String key = "firstName";
@@ -95,7 +95,7 @@ public class DataServiceTest {
     }
 
     @Test
-    public void IStoreTwoValuesWithSameTokenICanRetriveAList(){
+    public void IStoreTwoValuesWithSameTokenICanRetriveAList() {
 
         String token = new TokenService().requestToken();
         String key = "firstName";
@@ -114,8 +114,6 @@ public class DataServiceTest {
         Assert.assertEquals(value2, values.get(key2));
 
     }
-
-
 
 
 }

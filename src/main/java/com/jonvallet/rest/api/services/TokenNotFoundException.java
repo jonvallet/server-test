@@ -1,7 +1,10 @@
 package com.jonvallet.rest.api.services;
 
-public class TokenNotFoundException extends RuntimeException {
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
+
+public class TokenNotFoundException extends WebApplicationException {
     public TokenNotFoundException(String token) {
-        super("Token id :["+token+"] not found");
+        super(Response.status(Response.Status.NOT_FOUND).entity("Token wiht id: ["+token+"] not found.").build());
     }
 }

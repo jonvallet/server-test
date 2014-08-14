@@ -11,7 +11,7 @@ public class DataService {
     private DataStore dataStore = new DataStore();
 
 
-    public DataService(){
+    public DataService() {
 
     }
 
@@ -19,7 +19,7 @@ public class DataService {
     @PUT
     public void saveData(@PathParam(value = "token") String token,
                          @PathParam(value = "key") String key,
-                         @PathParam(value = "value") String value){
+                         @PathParam(value = "value") String value) {
 
         dataStore.storeValue(token, key, value);
 
@@ -27,16 +27,15 @@ public class DataService {
 
     @Path("/{token}/{key}")
     @GET
-    @Produces("application/json")
     public String retrieveData(@PathParam(value = "token") String token,
-                               @PathParam(value = "key") String key){
+                               @PathParam(value = "key") String key) {
         return dataStore.getValue(token, key);
     }
 
     @Path("/{token}")
     @GET
     @Produces("application/json")
-    public Map<String, String> retrieveData(@PathParam(value = "token") String token){
+    public Map<String, String> retrieveData(@PathParam(value = "token") String token) {
 
         return dataStore.getValues(token);
     }
