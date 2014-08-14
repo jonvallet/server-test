@@ -1,8 +1,9 @@
 package com.jonvallet.rest.api.services;
 
+import com.jonvallet.rest.api.model.DataStore;
+
 import javax.ws.rs.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 @Path("/data")
 public class DataService {
@@ -35,12 +36,9 @@ public class DataService {
     @Path("/{token}")
     @GET
     @Produces("application/json")
-    public List<String> retrieveData(@PathParam(value = "token") String token){
+    public Map<String, String> retrieveData(@PathParam(value = "token") String token){
 
-        List<String> strings = new ArrayList<>();
-        strings.add("Test");
-
-        return strings;
+        return dataStore.getValues(token);
     }
 
 }

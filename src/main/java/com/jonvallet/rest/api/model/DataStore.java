@@ -1,7 +1,6 @@
-package com.jonvallet.rest.api.services;
+package com.jonvallet.rest.api.model;
 
-import com.jonvallet.rest.api.model.DataStoreDao;
-import com.jonvallet.rest.api.model.FileDataStoreDaoImpl;
+import com.jonvallet.rest.api.services.TokenNotFoundException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,8 +37,18 @@ public class DataStore {
 
         Map<String,Map<String,String>> data = dataStoreDao.retrieve();
 
+        if (data.get(token) == null) {
+            throw new TokenNotFoundException(token);
+        }
+
         return data.get(token).get(key);
     }
 
+    public Map<String,String> getValues(String token) {
+
+        Map<String,Map<String,String>> data = dataStoreDao.retrieve();
+
+        return data.get(token);
+    }
 
 }

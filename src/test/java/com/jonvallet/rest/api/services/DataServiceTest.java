@@ -4,6 +4,8 @@ package com.jonvallet.rest.api.services;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Map;
+
 public class DataServiceTest {
 
     @Test
@@ -18,6 +20,30 @@ public class DataServiceTest {
         String retrieveValue = new DataService().retrieveData(token, key);
 
         Assert.assertEquals(value, retrieveValue);
+
+    }
+
+    @Test(expected=TokenNotFoundException.class)
+    public void IRetrieveAnonExistentTokenIGetATokenNotFoundException(){
+
+        String token = new TokenService().requestToken();
+        String key = "firstName";
+
+        Assert.assertNull(new DataService().retrieveData(token, key));
+    }
+
+    @Test
+    public void IRetrieveANonExistentKeyIGetNullValue(){
+
+        String token = new TokenService().requestToken();
+        String key = "firstName";
+        String value = "Jon";
+
+        new DataService().saveData(token, key, value);
+
+        String retrieveValue = new DataService().retrieveData(token, "surname");
+
+        Assert.assertNull(retrieveValue);
 
     }
 
@@ -67,6 +93,29 @@ public class DataServiceTest {
         Assert.assertEquals(value2, retrieveValue2);
 
     }
+
+    @Test
+    public void IStoreTwoValuesWithSameTokenICanRetriveAList(){
+
+        String token = new TokenService().requestToken();
+        String key = "firstName";
+        String value = "Jon";
+
+        String key2 = "lastName";
+        String value2 = "Vallet";
+
+        new DataService().saveData(token, key, value);
+        new DataService().saveData(token, key2, value2);
+
+        Map<String, String> values = new DataService().retrieveData(token);
+
+        Assert.assertEquals(value, values.get(key));
+
+        Assert.assertEquals(value2, values.get(key2));
+
+    }
+
+
 
 
 }
