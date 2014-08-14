@@ -7,11 +7,20 @@ import java.util.List;
 @Path("/data")
 public class DataService {
 
+    private DataStore dataStore = new DataStore();
+
+
+    public DataService(){
+
+    }
+
     @Path("/{token}/{key}/{value}")
     @PUT
     public void saveData(@PathParam(value = "token") String token,
                          @PathParam(value = "key") String key,
                          @PathParam(value = "value") String value){
+
+        dataStore.storeValue(token, key, value);
 
     }
 
@@ -20,7 +29,7 @@ public class DataService {
     @Produces("application/json")
     public String retrieveData(@PathParam(value = "token") String token,
                                @PathParam(value = "key") String key){
-        return "Test";
+        return dataStore.getValue(token, key);
     }
 
     @Path("/{token}")
