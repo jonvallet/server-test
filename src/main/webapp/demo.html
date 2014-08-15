@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Server Api Demo</h1>
+
+    <p>
+        <button id="request-token" onclick="requestToken()"> Request New Token</button>
+        <label id="token-label"></label>
+    </p>
+
+    <script type="text/javascript" language="javascript" src="js/jquery-1.11.1.min.js">
+    </script>
+
+    <script>
+        function requestToken(){
+            $.get( "rest/token", function( data ) {
+                $('#token-label').text(data);
+            });
+        }
+    </script>
+
+</body>
+</html>

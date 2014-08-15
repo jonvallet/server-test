@@ -15,6 +15,28 @@ public class DataService {
 
     }
 
+    @GET
+    @Produces("text/html;charset=utf-8")
+    public String retrieveData(){
+
+        String string = "<p>\n" +
+                "    For saving an entry, use PUT method an adding the following path parameters:\n" +
+                "    \"rest/data/{token}/{key}/{value}\"\n" +
+                "</p>\n" +
+                "\n" +
+                "<p>\n" +
+                "    For retrieving an entry, use GET method an adding the following path parameters:\n" +
+                "    \"rest/data/{token}/{key}\"\n" +
+                "</p>\n" +
+                "\n" +
+                "<p>\n" +
+                "    For retrieving all entries for a given token, use GET method an adding the following path parameters:\n" +
+                "    \"rest/data/{token}\"\n" +
+                "</p>";
+
+        return string;
+    }
+
     @Path("/{token}/{key}/{value}")
     @PUT
     public void saveData(@PathParam(value = "token") String token,
