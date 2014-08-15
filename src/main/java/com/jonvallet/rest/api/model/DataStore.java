@@ -1,16 +1,23 @@
 package com.jonvallet.rest.api.model;
 
 import com.jonvallet.rest.api.services.TokenNotFoundException;
+import com.jonvallet.rest.api.services.ValidationException;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class DataStore {
 
+    public static final int MAX_VALUE_SIZE = 100;
+    public static final int MIN_VALUE_SIZE = 1;
+    public static final int MIN_KEY_SIZE = 1;
+    public static final int MAX_KEY_SIZE = 20;
     public DataStoreDao dataStoreDao = new FileDataStoreDaoImpl();
 
     public void storeValue(String token, String key, String value){
 
+        validateKey(key);
+        validateValue(value);
 
         Map<String,Map<String,String>> data = dataStoreDao.retrieve();
 
@@ -22,6 +29,20 @@ public class DataStore {
 
         dataStoreDao.persist(data);
 
+    }
+
+    private void validateValue(String value) {
+        if (value == null || value.length() < MIN_VALUE_SIZE || value.length() > MAX_VALUE_SIZE){
+            throw new ValidationException("key", "Key has to be a non null string between "+MIN_VALUE_SIZE+
+                    " and "+MAX_VALUE_SIZE+" characters long. ");
+        }
+    }
+
+    private void validateKey(String key) {
+        if (key == null || key.length() < MIN_KEY_SIZE || key.length() > MAX_KEY_SIZE){
+            throw new ValidationException("key", "Key has to be a non null string between "+MIN_KEY_SIZE+
+                    " and "+MAX_KEY_SIZE+" characters long. ");
+        }
     }
 
 

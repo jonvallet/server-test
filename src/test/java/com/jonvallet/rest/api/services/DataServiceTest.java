@@ -115,5 +115,57 @@ public class DataServiceTest {
 
     }
 
+    @Test(expected = ValidationException.class)
+    public void IStoreWithAnEmptyKeyAnIllegalValidationExceptionIsThrown(){
+
+        String token = new TokenService().requestToken();
+        String key = null;
+        String value = "Jon";
+
+        new DataService().saveData(token, key, value);
+
+        new DataService().retrieveData(token, key);
+
+
+    }
+
+    @Test(expected = ValidationException.class)
+    public void IStoreWithAnEmptyValueAnIllegalValidationExceptionIsThrown(){
+
+        String token = new TokenService().requestToken();
+        String key = "firstName";
+        String value = null;
+
+        new DataService().saveData(token, key, value);
+
+        new DataService().retrieveData(token, key);
+
+    }
+
+    @Test(expected = ValidationException.class)
+    public void IStoreAToLongValueAnIllegalValidationExceptionIsThrown(){
+
+        String token = new TokenService().requestToken();
+        String key = "firstName";
+        String value = "01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
+
+        new DataService().saveData(token, key, value);
+
+        new DataService().retrieveData(token, key);
+
+    }
+
+    @Test(expected = ValidationException.class)
+    public void IStoreAToLongKeyAnIllegalValidationExceptionIsThrown(){
+
+        String token = new TokenService().requestToken();
+        String key = "012345678901234567890";
+        String value = "Jon";
+
+        new DataService().saveData(token, key, value);
+
+        new DataService().retrieveData(token, key);
+
+    }
 
 }
