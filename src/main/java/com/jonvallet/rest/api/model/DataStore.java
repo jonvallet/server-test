@@ -1,7 +1,7 @@
 package com.jonvallet.rest.api.model;
 
-import com.jonvallet.rest.api.services.TokenNotFoundException;
-import com.jonvallet.rest.api.services.ValidationException;
+import com.jonvallet.rest.api.exceptions.TokenNotFoundException;
+import com.jonvallet.rest.api.exceptions.ValidationException;
 
 import java.util.HashMap;
 import java.util.Map;

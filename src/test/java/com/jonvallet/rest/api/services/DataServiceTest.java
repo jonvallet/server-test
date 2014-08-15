@@ -1,6 +1,8 @@
 package com.jonvallet.rest.api.services;
 
 
+import com.jonvallet.rest.api.exceptions.TokenNotFoundException;
+import com.jonvallet.rest.api.exceptions.ValidationException;
 import org.junit.Assert;
 import org.junit.Test;
 
