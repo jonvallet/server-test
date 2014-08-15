@@ -6,7 +6,30 @@
 <body>
 <h1>Server Api Test</h1>
 
-<a href="rest/token">Request Token</a>
+
+<p>Use the following to request a new unique token:
+    <a href="rest/token" target="_blank">Request Token</a>
+</p>
+
+<p>The base url for storing and saving is the following:
+    <a href="rest/data" target="_blank">Data base url</a>
+</p>
+
+<p>
+    For saving an entry, use PUT method an adding the following path parameters:
+    "rest/data/{token}/{key}/{value}"
+</p>
+
+<p>
+    For retrieving an entry, use GET method an adding the following path parameters:
+    "rest/data/{token}/{key}"
+</p>
+
+<p>
+    For retrieving all entries for a given token, use GET method an adding the following path parameters:
+    "rest/data/{token}"
+</p>
+
 
 </body>
 </html>

@@ -27,6 +27,7 @@ public class DataService {
 
     @Path("/{token}/{key}")
     @GET
+    @Produces("text/plain;charset=utf-8")
     public String retrieveData(@PathParam(value = "token") String token,
                                @PathParam(value = "key") String key) {
         return dataStore.getValue(token, key);
@@ -34,7 +35,7 @@ public class DataService {
 
     @Path("/{token}")
     @GET
-    @Produces("application/json")
+    @Produces("application/json;charset=utf-8")
     public Map<String, String> retrieveData(@PathParam(value = "token") String token) {
 
         return dataStore.getValues(token);
