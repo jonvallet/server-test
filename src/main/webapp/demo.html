@@ -54,7 +54,8 @@
             $.ajax({
                 url: "rest/data/"+token+"/"+key,
                 type: "PUT",
-                data: value
+                data: value,
+                contentType: "text/plain;charset=utf-8"
             });
         }
 
