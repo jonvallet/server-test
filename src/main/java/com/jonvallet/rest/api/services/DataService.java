@@ -37,11 +37,12 @@ public class DataService {
         return string;
     }
 
-    @Path("/{token}/{key}/{value}")
+    @Path("/{token}/{key}")
     @PUT
+    @Consumes("text/plain;charset=utf-8")
     public void saveData(@PathParam(value = "token") String token,
                          @PathParam(value = "key") String key,
-                         @PathParam(value = "value") String value) {
+                         String value) {
 
         dataStore.storeValue(token, key, value);
 

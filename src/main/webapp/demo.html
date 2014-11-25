@@ -52,8 +52,9 @@
             value = $('#save-value').val();
 
             $.ajax({
-                url: "rest/data/"+token+"/"+key+"/"+value,
-                type: "PUT"
+                url: "rest/data/"+token+"/"+key,
+                type: "PUT",
+                data: value
             });
         }
 
