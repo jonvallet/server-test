@@ -8,9 +8,4 @@
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 
-    <!--<servlet-mapping>
-        <servlet-name>com.avalonbiometrics.visalon.api.RestApplication</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>-->
-
 </web-app>
